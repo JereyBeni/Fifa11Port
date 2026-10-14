@@ -8,15 +8,18 @@ android {
 
     defaultConfig {
         applicationId "com.fifa11.port"
-        minSdk 21 // Soporte base para Android 5, 9 y 15
+        minSdk 21
         targetSdk 35
         versionCode 1
-        versionName "1.0-unstable"
+        versionName "1.0"
 
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        
         externalNativeBuild {
             cmake {
-                cppFlags "-std=c++17"
-                abiFilters 'armeabi-v7a', 'arm64-v8a' // 32 bits (Android 5/9) y 64 bits (Android 15)
+                cppFlags "-std=c++17 -frtti -fexceptions"
+                // Forzamos arm64-v8a para que vuele en el Moto G15 con Android 15
+                abiFilters 'arm64-v8a'
             }
         }
     }
@@ -27,21 +30,21 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
+    
     externalNativeBuild {
         cmake {
-            path file("../CMakeLists.txt")
-            version "3.22.1"
+            path file('../CMakeLists.txt')
+            version '3.22.1'
         }
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 }
 
 dependencies {
     implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'com.google.android.material:material:1.9.0'
 }
