@@ -18,10 +18,11 @@ public class MainActivity extends Activity {
     // Declaración del método nativo que recibe la resolución desde Java
     public native void initResolution(int width, int height);
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
+   @Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main); // <-- Cargamos la UI
+    
         // 1. Detectar versión de Android para definir la resolución óptima
         int sdkVersion = Build.VERSION.SDK_INT;
         int targetWidth, targetHeight;

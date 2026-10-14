@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000">
+
+    <!-- Superficie donde C++ renderiza el juego con OpenGL ES -->
+    <SurfaceView
+        android:id="@+id/gameSurfaceView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- Menú principal superpuesto manejado por Java -->
+    <LinearLayout
+        android:id="@+id/menuOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:background="#B3000000">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="FIFA 11 MOBILE PORT"
+            android:textColor="#FFFFFF"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="30dp"/>
+
+        <Button
+            android:id="@+id/btnPlay"
+            android:layout_width="220dp"
+            android:layout_height="50dp"
+            android:text="JUGAR" />
+
+        <Button
+            android:id="@+id/btnSettings"
+            android:layout_width="220dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="15dp"
+            android:text="CONFIGURAR" />
+    </LinearLayout>
+
+</RelativeLayout>
