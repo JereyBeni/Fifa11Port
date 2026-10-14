@@ -1,22 +1,20 @@
 cmake_minimum_required(VERSION 3.22.1)
-project(Fifa11Port)
+project("fifa11port")
 
-# Estándar de C++ moderno
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-# Librería compartida nativa para Android (.so)
-add_library(fifa11_core SHARED
+# Compilar la librería nativa compartida incluyendo el parser de archivos .big
+add_library(
+    fifa11_core
+    SHARED
     app/src/main/cpp/main.cpp
+    app/src/main/cpp/BigParser.cpp
 )
 
-# Enlazar librerías nativas de Android (OpenGL ES, Log, Android)
-find_library(log-lib log)
-find_library(gles-lib GLESv3)
-find_library(android-lib android)
+find_library(
+    log-lib
+    log
+)
 
-target_link_libraries(fifa11_core
+target_link_libraries(
+    fifa11_core
     ${log-lib}
-    ${gles-lib}
-    ${android-lib}
 )
